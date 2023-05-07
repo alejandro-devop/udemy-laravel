@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MessagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,5 +16,6 @@ Route::view('/', 'home', ['name' => 'Alejandro'])->name('home');
 Route::view('/about', 'about')->name('about');
 Route::get('/portfolio', 'App\Http\Controllers\PortfolioController@index')->name('portfolio');
 Route::view('/contact', 'contact')->name('contact');
+Route::post('/contact', [MessagesController::class, 'store'])->name('sendMessage');
 
 // Route::resource('/projects', 'App\Http\Controllers\PortfolioController');

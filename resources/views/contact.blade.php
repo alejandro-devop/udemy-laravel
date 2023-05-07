@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', 'Contact')
 @section('content')
-Contact
+<h1>Contact</h1>
+@include('contact.form')
 @endsection
