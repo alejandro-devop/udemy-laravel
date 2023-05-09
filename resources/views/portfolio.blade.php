@@ -3,12 +3,12 @@
 @section('content')
 <h1>Portfolio</h1>
 <ul>
-	
+	<a href="{{ route('portfolio.create') }}">Crear</a>
 		@forelse($portfolio as $item)
 			<li>
-				<span>{{ $item['title'] }}</span>
-				<small>{{ $loop->first ? "Es el primero" : "" }}</small>
-				<small>{{ $loop->last ? "Es el ultimo" : "" }}</small>
+				<span>{{ $item->title }}</span>
+				<p>{{ $item->description }}</p>
+				<a href="{{ route('portfolio.show', $item) }}">View</a>
 			</li>
 		@empty
 			<li>No hay proyectos para mostrar</li>

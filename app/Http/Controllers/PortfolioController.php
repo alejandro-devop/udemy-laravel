@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use DB;
+use App\Models\Project;
+use App\Http\Requests\CreateProjectRequest;
 
 class PortfolioController extends Controller
 {
@@ -11,12 +14,10 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $portfolio = [
-            ['title' => 'Proyecto #1'],
-            ['title' => 'Proyecto #2'],
-            ['title' => 'Proyecto #3'],
-            ['title' => 'Proyecto #4'],
-        ];
+        // $portfolio = DB::table('projects')->get();
+        // $portfolio = Project::orderBy('created_at', 'DESC')->get();
+        $portfolio = Project::latest()->get();
+
         return view('portfolio', compact('portfolio'));
     }
 
@@ -25,23 +26,43 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        //
+        return view('portfolio.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateProjectRequest $request)
     {
+        // $title = request('title');
+        // $slug = request('slug');
+        // $description = request('description');
+        // Project::create([
+        //     'title' => request('title'),
+        //     'slug' => request('slug'),
+        //     'description' => request('description'),
+        // ]);
+        
+        Project::create($request->validated());
+        return redirect()->route('portfolio.index');
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    // /**
+    //  * Display the specified resource.
+    //  */
+    // public function show(string $id)
+    // {
+    //     return view('portfolio.show', [
+    //         'project' => Project::findOrFail($id)
+    //     ]);
+    // }
+    // 
+    public function show(Project $project)
     {
-        //
+        return view('portfolio.show', [
+            'project' => $project
+        ]);
     }
 
     /**
