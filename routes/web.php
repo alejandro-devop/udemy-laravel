@@ -15,12 +15,16 @@ use App\Http\Controllers\PortfolioController;
 */
 Route::view('/', 'home', ['name' => 'Alejandro'])->name('home');
 Route::view('/about', 'about')->name('about');
-Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
-Route::post('/portfolio', [PortfolioController::class, 'store'])->name('portfolio.store');
-Route::get('/portfolio/create', [PortfolioController::class, 'create'])->name('portfolio.create');
-Route::get('/portfolio/{project}/editar', [PortfolioController::class, 'edit'])->name('portfolio.edit');
-Route::patch('/portfolio/{project}', [PortfolioController::class, 'update'])->name('portfolio.update');
-Route::get('/portfolio/{project}', [PortfolioController::class, 'show'])->name('portfolio.show');
+
+// Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
+// Route::post('/portfolio', [PortfolioController::class, 'store'])->name('portfolio.store');
+// Route::get('/portfolio/create', [PortfolioController::class, 'create'])->name('portfolio.create');
+// Route::get('/portfolio/{project}/editar', [PortfolioController::class, 'edit'])->name('portfolio.edit');
+// Route::patch('/portfolio/{project}', [PortfolioController::class, 'update'])->name('portfolio.update');
+// Route::get('/portfolio/{project}', [PortfolioController::class, 'show'])->name('portfolio.show');
+// Route::delete('/portfolio/{project}', [PortfolioController::class, 'destroy'])->name('portfolio.destroy');
+
+Route::resource('portfolio', PortfolioController::class)->names('portfolio')->parameters(['portfolio' => 'project']);
 
 
 Route::view('/contact', 'contact')->name('contact');
