@@ -31,3 +31,6 @@ Route::view('/contact', 'contact')->name('contact');
 Route::post('/contact', [MessagesController::class, 'store'])->name('sendMessage');
 
 // Route::resource('/projects', 'App\Http\Controllers\PortfolioController');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
