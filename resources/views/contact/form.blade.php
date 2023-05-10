@@ -7,7 +7,6 @@
 		@endforeach
 	</ul>
 	@endif --}}
-	{{ __('some_some') }}
 	<input name="name" placeholder="Nombre" value="{{ old('name') }}" /><br>
 	{!! $errors->first('name', '<small>:message</small><br/>') !!}
 	<input name="email" placeholder="Email" value="{{ old('email') }}"/><br>

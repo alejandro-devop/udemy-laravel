@@ -46,7 +46,7 @@ class PortfolioController extends Controller
         // ]);
         
         Project::create($request->validated());
-        return redirect()->route('portfolio.index');
+        return redirect()->route('portfolio.index')->with('status', 'El proyecto se guardó!');
         //
     }
 
@@ -83,7 +83,7 @@ class PortfolioController extends Controller
     public function update(CreateProjectRequest $request, Project $project)
     {
         $project->update($request->validated());
-        return redirect()->route('portfolio.show', $project);
+        return redirect()->route('portfolio.show', $project)->with('status', 'El proyecto se Actualizó!');;
     }
 
     /**
@@ -92,6 +92,6 @@ class PortfolioController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('portfolio.index');
+        return redirect()->route('portfolio.index')->with('status', 'El proyecto se Eliminó!');;
     }
 }

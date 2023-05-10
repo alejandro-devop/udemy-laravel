@@ -13,6 +13,7 @@
 </head>
 <body>
 	@include('partials.nav')
+	@include('partials.messages')
 	@yield('content')
 </body>
 </html>

@@ -19,7 +19,6 @@ class MessagesController extends Controller
         ]);
         # Send email.
         Mail::to('alejandro@alejosworld.com')->queue(new MessageReceive($data));
-        return new MessageReceive($data);
-        // return "Mensaje enviado";
+        return back()->with(['status' => 'Recibimos tu mensaje y te vamos a responder']);
     }
 }

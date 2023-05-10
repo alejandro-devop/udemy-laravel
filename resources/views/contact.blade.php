@@ -2,5 +2,9 @@
 @section('title', 'Contact')
 @section('content')
 <h1>Contact</h1>
-@include('contact.form')
+@if(session('status'))
+{{ session('status') }}
+@else 
+	@include('contact.form')
+@endif
 @endsection
