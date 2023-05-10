@@ -68,17 +68,20 @@ class PortfolioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view('portfolio.edit', [
+            'project' => $project
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreateProjectRequest $request, Project $project)
     {
-        //
+        $project->update($request->validated());
+        return redirect()->route('portfolio.show', $project);
     }
 
     /**

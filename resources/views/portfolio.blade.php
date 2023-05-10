@@ -9,6 +9,7 @@
 				<span>{{ $item->title }}</span>
 				<p>{{ $item->description }}</p>
 				<a href="{{ route('portfolio.show', $item) }}">View</a>
+				<a href="{{ route('portfolio.edit', $item) }}">Edit</a>
 			</li>
 		@empty
 			<li>No hay proyectos para mostrar</li>
