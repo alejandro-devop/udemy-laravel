@@ -44,8 +44,10 @@ class PortfolioController extends Controller
         //     'slug' => request('slug'),
         //     'description' => request('description'),
         // ]);
-        
-        Project::create($request->validated());
+        $project = new Project($request->validated());
+        $project->image = $request->file('image')->store('images', 'public');
+        $project->save();
+
         return redirect()->route('portfolio.index')->with('status', 'El proyecto se guardó!');
         //
     }
